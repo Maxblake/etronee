@@ -1,13 +1,31 @@
-import React from 'react'
+import React from 'react';
 
-import './featured-categories.styles.scss'
+import { connect } from 'react-redux';
+import { fetchCategoriesData } from '../../redux/categories/categories.actions'
 
-const FeaturedCategories = () => {
+import CATEGORIES_DATA from '../../redux/categories/categories.data'
+
+import './featured-categories.styles.scss';
+
+const FeaturedCategories = ({ categories, fetchCategoriesData }) => {
+    fetchCategoriesData(CATEGORIES_DATA)
     return (
         <div className='featured-categories-menu'>
-            <div className='category'>component1</div>
+            {categories ? categories.subcategories.map(category => (
+                <div className='category' key={category.category_id}>
+                    {category.category_name}
+                </div>
+            )) : null}
         </div>
-    )
-}
+    );
+};
 
-export default FeaturedCategories
+const mapDispatchToProps = dispatch => ({
+    fetchCategoriesData: categoriesDataFromFetch => dispatch(fetchCategoriesData(categoriesDataFromFetch))
+})
+
+const mapStateToProps = state => ({
+    categories: state.categories.categoriesData
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(FeaturedCategories);
