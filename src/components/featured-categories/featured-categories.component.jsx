@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchCategoriesStart } from '../../redux/categories/categories.actions'
 
+import SpinnerBlock from '../spinner-block/spinner-block.component'
+
 import './featured-categories.styles.scss';
 
 class FeaturedCategories extends Component {
@@ -19,7 +21,7 @@ class FeaturedCategories extends Component {
                     <div className='category' key={category.category_id}>
                         {category.category_name}
                     </div>
-                )) : null}
+                )) : <SpinnerBlock />}
             </div>
         );
     }
