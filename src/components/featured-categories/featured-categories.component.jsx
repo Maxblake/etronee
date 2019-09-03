@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
-import { fetchCategoriesStart } from '../../redux/categories/categories.actions'
+import { fetchFeaturedCategoriesStart } from '../../redux/featured-categories/featured-categories.actions'
 
 import SpinnerBlock from '../spinner-block/spinner-block.component'
 
@@ -9,16 +9,16 @@ import './featured-categories.styles.scss';
 
 class FeaturedCategories extends Component {
     componentDidMount() {
-        const { fetchCategoriesStart } = this.props;
-        fetchCategoriesStart();
+        const { fetchFeaturedCategoriesStart } = this.props;
+        fetchFeaturedCategoriesStart();
     }
 
     render() {
-        const { categoriesData, isCategoriesFetched } = this.props;
+        const { featuredCategoriesData, isFeaturedCategoriesFetched } = this.props;
         return (
             <div className='featured-categories-menu'>
-                {isCategoriesFetched ? categoriesData.subcategories.map(category => (
-                    <div className='category' key={category.category_id}>
+                {isFeaturedCategoriesFetched ? featuredCategoriesData.subcategories.map(category => (
+                    <div className='featured-category' key={category.category_id}>
                         {category.category_name}
                     </div>
                 )) : <SpinnerBlock />}
@@ -28,12 +28,12 @@ class FeaturedCategories extends Component {
 };
 
 const mapDispatchToProps = dispatch => ({
-    fetchCategoriesStart: () => dispatch(fetchCategoriesStart())
+    fetchFeaturedCategoriesStart: () => dispatch(fetchFeaturedCategoriesStart())
 })
 
-const mapStateToProps = ({ categories: { categoriesData, isCategoriesFetched } }) => ({
-    categoriesData,
-    isCategoriesFetched
+const mapStateToProps = ({ featuredCategories: { featuredCategoriesData, isFeaturedCategoriesFetched } }) => ({
+    featuredCategoriesData,
+    isFeaturedCategoriesFetched
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FeaturedCategories);
