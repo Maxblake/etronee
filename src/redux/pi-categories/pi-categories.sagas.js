@@ -2,6 +2,7 @@ import { takeLatest, call, put } from 'redux-saga/effects';
 
 import PiCategoriesActionTypes from './pi-categories.types';
 import { makePiCategoriesUrl } from './pi-categories.utils';
+import { findPiBoardsCategory } from './pi-categories.utils';
 import {
   fetchPiCategoriesSuccess,
   fetchPiCategoriesFailure
@@ -16,7 +17,12 @@ export function* fetchPiCategoriesAsync() {
     );
     const piCategoriesResponse = yield fetch(piCategoriesFetchUrl);
     const piCategoriesData = yield piCategoriesResponse.json();
-    yield put(fetchPiCategoriesSuccess(piCategoriesData));
+    const piBoardsCategoryData = yield call(findPiBoardsCategory, [
+      piCategoriesData,
+      '1000' /* RASPBERRY PI 4 categories*/,
+      '1003' /* RASPBERRY PI 4 boards category */
+    ]);
+    yield put(fetchPiCategoriesSuccess(piBoardsCategoryData));
   } catch (error) {
     yield put(fetchPiCategoriesFailure(error.message));
   }

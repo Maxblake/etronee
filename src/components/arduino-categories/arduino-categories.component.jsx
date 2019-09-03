@@ -18,9 +18,9 @@ class ArduinoCategories extends Component {
     return (
       <div className='arduino-categories-menu'>
         {isArduinoCategoriesFetched ? (
-          arduinoCategoriesData.subcategories.map(category => (
-            <div className='arduino-category' key={category.category_id}>
-              {category.category_name}
+          arduinoCategoriesData.products.map(product => (
+            <div className='arduino-product' key={product.product_id}>
+              {product.product_name}
             </div>
           ))
         ) : (

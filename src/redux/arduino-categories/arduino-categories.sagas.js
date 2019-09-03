@@ -2,6 +2,7 @@ import { takeLatest, call, put } from 'redux-saga/effects';
 
 import AdruinoCategoriesActionTypes from './arduino-categories.types';
 import { makeArduinoCategoriesUrl } from './arduino-categories.utils';
+import { findArduinoBoardsCategory } from './arduino-categories.utils';
 import {
   fetchArduinoCategoriesSuccess,
   fetchArduinoCategoriesFailure
@@ -16,7 +17,11 @@ export function* fetchArduinoCategoriesAsync() {
     );
     const arduinoCategoriesResponse = yield fetch(arduinoCategoriesFetchUrl);
     const arduinoCategoriesData = yield arduinoCategoriesResponse.json();
-    yield put(fetchArduinoCategoriesSuccess(arduinoCategoriesData));
+    const arduinoBoardsCategoryData = yield call(findArduinoBoardsCategory, [
+      arduinoCategoriesData,
+      '171' /* ARDUINO BOARDS category*/
+    ]);
+    yield put(fetchArduinoCategoriesSuccess(arduinoBoardsCategoryData));
   } catch (error) {
     yield put(fetchArduinoCategoriesFailure(error.message));
   }

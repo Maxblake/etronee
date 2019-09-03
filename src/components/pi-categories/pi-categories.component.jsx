@@ -18,9 +18,9 @@ class PiCategories extends Component {
     return (
       <div className='pi-categories-menu'>
         {isPiCategoriesFetched ? (
-          piCategoriesData.subcategories.map(category => (
-            <div className='pi-category' key={category.category_id}>
-              {category.category_name}
+          piCategoriesData.products.map(product => (
+            <div className='pi-product' key={product.product_id}>
+              {product.product_name}
             </div>
           ))
         ) : (
