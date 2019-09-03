@@ -1,16 +1,17 @@
-import React from 'react'
+import React from 'react';
 
-import ArduinoCategories from '../arduino-categories/arduino-categories.component'
+import ArduinoCategories from '../arduino-categories/arduino-categories.component';
+import PiCategories from '../pi-categories/pi-categories.component';
 
-import './boards-categories.styles.scss'
+import './boards-categories.styles.scss';
 
 const BoardsCategories = () => {
-    return (
-        <div className='boards-categories-menu'>
-            <ArduinoCategories />
-            <div className='pi-category'>pi</div>
-        </div>
-    )
-}
+  return (
+    <div className='boards-categories-menu'>
+      <ArduinoCategories />
+      <PiCategories />
+    </div>
+  );
+};
 
-export default BoardsCategories
+export default BoardsCategories;
