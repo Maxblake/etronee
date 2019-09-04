@@ -1,8 +1,8 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
 
 import AdruinoCategoriesActionTypes from './arduino-categories.types';
-import { makeArduinoCategoriesUrl } from './arduino-categories.utils';
-import { findArduinoBoardsCategory } from './arduino-categories.utils';
+import { makeCategoriesUrl } from '../utils';
+import { findBoardsCategory } from '../utils';
 import {
   fetchArduinoCategoriesSuccess,
   fetchArduinoCategoriesFailure
@@ -12,12 +12,12 @@ export function* fetchArduinoCategoriesAsync() {
   const arduinoCategoriesUrl = 'https://www.adafruit.com/api/category/17';
   try {
     const arduinoCategoriesFetchUrl = yield call(
-      makeArduinoCategoriesUrl,
+      makeCategoriesUrl,
       arduinoCategoriesUrl
     );
     const arduinoCategoriesResponse = yield fetch(arduinoCategoriesFetchUrl);
     const arduinoCategoriesData = yield arduinoCategoriesResponse.json();
-    const arduinoBoardsCategoryData = yield call(findArduinoBoardsCategory, [
+    const arduinoBoardsCategoryData = yield call(findBoardsCategory, [
       arduinoCategoriesData,
       '171' /* ARDUINO BOARDS category*/
     ]);
