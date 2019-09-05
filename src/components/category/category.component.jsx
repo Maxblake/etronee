@@ -1,21 +1,32 @@
 import React from 'react';
 
-import SpinnerBlock from '../spinner-block/spinner-block.component';
-
 import './category.styles.scss';
 
-const Category = ({ categoryData, isFetched, ...otherProps }) => {
+const Category = ({ categoryName, categoryData, isFetched, ...otherProps }) => {
   return (
-    <div>
-      {isFetched ? (
-        categoryData.products.map(product => (
-          <div className='product' key={product.product_id}>
-            {product.product_name}
-          </div>
-        ))
-      ) : (
-        <SpinnerBlock />
-      )}
+    <div className={`category_container ${categoryName}-category_container`}>
+      {categoryName === 'featured-category' ? (
+        <div
+          className='featured_background-image'
+          style={{
+            backgroundImage: `url(${categoryData.products[0].product_image})`
+          }}
+        />
+      ) : null}
+      <span className={`${categoryName}-category_title`} {...otherProps}>
+        {categoryName === 'featured-category'
+          ? categoryData.category_name
+          : categoryName === 'arduino'
+          ? 'Arduino'
+          : 'Raspberry Pi'}
+      </span>
+      {categoryName === 'arduino' ? (
+        <span className='board-slogan'>Get Back your Ooo with Arduino</span>
+      ) : categoryName === 'pi' ? (
+        <span className='board-slogan'>
+          Sell your old iPhone and buy yourself a decent computer
+        </span>
+      ) : null}
     </div>
   );
 };

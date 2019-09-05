@@ -1,0 +1,31 @@
+.category_container {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid red;
+}
+
+.arduino-category_container,
+.pi-category_container {
+  justify-content: center;
+  width: 95%;
+  height: 11rem;
+}
+
+.featured-category-category_container {
+  justify-content: flex-start;
+  width: 6.5rem;
+  height: 11rem;
+
+  & .featured_background-image {
+    width: auto;
+    height: 6rem;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+  }
+
+  & .featured-category-category_title {
+    text-align: center;
+    overflow-wrap: break-word;
+  }
+}

@@ -48,32 +48,41 @@ class HomePage extends Component {
 
     return (
       <div className='homepage'>
-        <div className='boards-categories'>
+        <div className='boards-categories_section'>
           <h2>From Arduino to Raspberry Pi</h2>
-          <Category
-            categoryName='arduino'
-            categoryData={arduinoCategoriesData}
-            isFetched={isArduinoCategoriesFetched}
-          />
-          <Category
-            categoryName='pi'
-            categoryData={piCategoriesData}
-            isFetched={isPiCategoriesFetched}
-          />
+          <div className='boards-categories_overview'>
+            <Category
+              key={arduinoCategoriesData.category_id}
+              categoryName='arduino'
+              categoryData={arduinoCategoriesData}
+              isFetched={isArduinoCategoriesFetched}
+            />
+            <Category
+              key={piCategoriesData.category_id}
+              categoryName='pi'
+              categoryData={piCategoriesData}
+              isFetched={isPiCategoriesFetched}
+            />
+          </div>
         </div>
-        <div className='featured-categories'>
+        <div className='featured-categories-section'>
           <h2>Featured Categories</h2>
-          {isFeaturedCategoriesFetched ? (
-            featuredCategoriesData.subcategories.map(subcategory =>
-              !subcategory.subcategories.length ? (
-                <div key={subcategory.category_id}>
-                  {subcategory.category_name}
-                </div>
-              ) : null
-            )
-          ) : (
-            <SpinnerBlock />
-          )}
+          <div className='featured-categories_overview'>
+            {isFeaturedCategoriesFetched ? (
+              featuredCategoriesData.subcategories.map(subcategory =>
+                !subcategory.subcategories.length ? (
+                  <Category
+                    key={subcategory.category_id}
+                    categoryName='featured-category'
+                    categoryData={subcategory}
+                    isFetched={isFeaturedCategoriesFetched}
+                  />
+                ) : null
+              )
+            ) : (
+              <SpinnerBlock />
+            )}
+          </div>
         </div>
       </div>
     );
