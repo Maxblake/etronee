@@ -1,9 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import { fetchFeaturedCategoriesStart } from '../../redux/featured-categories/featured-categories.actions';
 import { fetchArduinoCategoriesStart } from '../../redux/arduino-categories/arduino-categories.actions';
 import { fetchPiCategoriesStart } from '../../redux/pi-categories/pi-categories.actions';
+
+import {
+  selectPiCategoriesData,
+  selectIsPiCategoriesFetched
+} from '../../redux/pi-categories/pi-categories.selectors';
+import {
+  selectFeaturedCategoriesData,
+  selectIsFeaturedCategoriesFetched
+} from '../../redux/featured-categories/featured-categories.selectors';
+import {
+  selectArduinoCategoriesData,
+  selectIsArduinoCategoriesFetched
+} from '../../redux/arduino-categories/arduino-categories.selectors';
 
 import Category from '../../components/category/category.component';
 import SpinnerBlock from '../../components/spinner-block/spinner-block.component';
@@ -72,17 +86,13 @@ const mapDispatchToProps = dispatch => ({
   fetchPiCategoriesStart: () => dispatch(fetchPiCategoriesStart())
 });
 
-const mapStateToProps = ({
-  featuredCategories: { featuredCategoriesData, isFeaturedCategoriesFetched },
-  arduinoCategories: { arduinoCategoriesData, isArduinoCategoriesFetched },
-  piCategories: { piCategoriesData, isPiCategoriesFetched }
-}) => ({
-  featuredCategoriesData,
-  arduinoCategoriesData,
-  piCategoriesData,
-  isFeaturedCategoriesFetched,
-  isArduinoCategoriesFetched,
-  isPiCategoriesFetched
+const mapStateToProps = createStructuredSelector({
+  featuredCategoriesData: selectFeaturedCategoriesData,
+  arduinoCategoriesData: selectArduinoCategoriesData,
+  piCategoriesData: selectPiCategoriesData,
+  isFeaturedCategoriesFetched: selectIsFeaturedCategoriesFetched,
+  isArduinoCategoriesFetched: selectIsArduinoCategoriesFetched,
+  isPiCategoriesFetched: selectIsPiCategoriesFetched
 });
 
 export default connect(
