@@ -11,3 +11,12 @@ export const selectIsFeaturedCategoriesFetched = createSelector(
   [selectFeaturedCategories],
   featuredCategoriesSate => featuredCategoriesSate.isFeaturedCategoriesFetched
 );
+
+export const selectFindFeaturedCategoriesByParams = params =>
+  createSelector(
+    [selectFeaturedCategoriesData],
+    featuredCategory =>
+      featuredCategory.subcategories.find(
+        eachCategory => eachCategory.category_id === params
+      )
+  );

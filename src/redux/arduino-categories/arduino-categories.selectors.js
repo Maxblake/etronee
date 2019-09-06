@@ -11,3 +11,8 @@ export const selectIsArduinoCategoriesFetched = createSelector(
   [selectArduinoCategories],
   arduinoCategoriesSate => arduinoCategoriesSate.isArduinoCategoriesFetched
 );
+
+export const selectFindArduinoCategoriesByParams = createSelector(
+  [selectArduinoCategoriesData],
+  arduinoCategory => arduinoCategory
+);

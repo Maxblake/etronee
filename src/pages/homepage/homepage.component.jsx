@@ -45,24 +45,29 @@ class HomePage extends Component {
       isArduinoCategoriesFetched,
       isPiCategoriesFetched
     } = this.props;
-
     return (
       <div className='homepage'>
         <div className='boards-categories_section'>
           <h2>From Arduino to Raspberry Pi</h2>
           <div className='boards-categories_overview'>
-            <Category
-              key={arduinoCategoriesData.category_id}
-              categoryName='arduino'
-              categoryData={arduinoCategoriesData}
-              isFetched={isArduinoCategoriesFetched}
-            />
-            <Category
-              key={piCategoriesData.category_id}
-              categoryName='pi'
-              categoryData={piCategoriesData}
-              isFetched={isPiCategoriesFetched}
-            />
+            {isArduinoCategoriesFetched ? (
+              <Category
+                key={arduinoCategoriesData.category_id}
+                categoryName='arduino'
+                categoryData={arduinoCategoriesData}
+              />
+            ) : (
+              <SpinnerBlock />
+            )}
+            {isPiCategoriesFetched ? (
+              <Category
+                key={piCategoriesData.category_id}
+                categoryName='pi'
+                categoryData={piCategoriesData}
+              />
+            ) : (
+              <SpinnerBlock />
+            )}
           </div>
         </div>
         <div className='featured-categories-section'>
@@ -75,7 +80,6 @@ class HomePage extends Component {
                     key={subcategory.category_id}
                     categoryName='featured-category'
                     categoryData={subcategory}
-                    isFetched={isFeaturedCategoriesFetched}
                   />
                 ) : null
               )

@@ -11,3 +11,8 @@ export const selectIsPiCategoriesFetched = createSelector(
   [selectPiCategories],
   piCategoriesSate => piCategoriesSate.isPiCategoriesFetched
 );
+
+export const selectFindPiCategoriesByParams = createSelector(
+  [selectPiCategoriesData],
+  piCategory => piCategory
+);
