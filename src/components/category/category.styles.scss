@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  border: 2px solid red;
 
   &:hover {
     text-decoration: underline;
@@ -12,9 +11,12 @@
 .arduino-category_container,
 .pi-category_container {
   justify-content: center;
-  width: 95%;
+  position: relative;
+  width: 100%;
   height: 11rem;
-  background-color: #ffca28;
+  border: 1px solid #ffd700;
+  background: #ffee58;
+  z-index: 1;
 
   & .arduino-category_title,
   & .pi-category_title {
@@ -23,7 +25,16 @@
   }
 
   & .board-slogan {
-    font-size: 1.1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  & .board-category-background {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
   }
 }
 

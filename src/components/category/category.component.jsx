@@ -1,6 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
+import { ReactComponent as BackgroundOne } from '../assets/category-background-one.svg';
+import { ReactComponent as BackgroundTwo } from '../assets/category-background-two.svg';
+
 import './category.styles.scss';
 
 const Category = ({ categoryName, categoryData, history, match }) => {
@@ -25,11 +28,17 @@ const Category = ({ categoryName, categoryData, history, match }) => {
           : 'Raspberry Pi'}
       </span>
       {categoryName === 'arduino' ? (
-        <span className='board-slogan'>Get Back your Ooo with Arduino</span>
+        <div>
+          <span className='board-slogan'>Get Back your Ooo with Arduino</span>
+          <BackgroundOne className='board-category-background' />
+        </div>
       ) : categoryName === 'pi' ? (
-        <span className='board-slogan'>
-          Sell your old iPhone and buy yourself a decent computer
-        </span>
+        <div>
+          <span className='board-slogan'>
+            Sell your old iPhone and buy yourself a decent computer
+          </span>
+          <BackgroundTwo className='board-category-background' />
+        </div>
       ) : null}
     </div>
   );

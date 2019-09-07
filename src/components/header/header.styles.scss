@@ -1,0 +1,31 @@
+.header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #f06292;
+  height: 3rem;
+
+  & .logo-container {
+    width: 1.5rem;
+    position: relative;
+
+    & .logo {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  & .options-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    & .signin-option {
+      text-decoration: none;
+      cursor: pointer;
+      color: #fff;
+    }
+  }
+}
