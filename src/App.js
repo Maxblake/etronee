@@ -8,7 +8,7 @@ import './App.css';
 
 const HomePage = lazy(() => import('./pages/homepage/homepage.component'));
 const SignInPage = lazy(() =>
-  import('./pages/signin-page/signin-page.component')
+  import('./pages/sign-in-page/sign-in-page.component')
 );
 const CollectionPage = lazy(() =>
   import('./pages/collection-page/collection-page.component')
