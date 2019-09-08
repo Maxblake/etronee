@@ -1,7 +1,7 @@
 import FeaturedCategoriesActionTypes from './featured-categories.types';
 
 const INITIAL_STATE = {
-  featuredCategoriesData: [],
+  featuredCategoriesData: {},
   isFeaturedCategoriesFetched: false,
   errorMessage: null
 };

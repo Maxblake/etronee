@@ -4,12 +4,12 @@ const selectPiCategories = state => state.piCategories;
 
 export const selectPiCategoriesData = createSelector(
   [selectPiCategories],
-  piCategoriesSate => piCategoriesSate.piCategoriesData
+  piCategoriesState => piCategoriesState.piCategoriesData
 );
 
 export const selectIsPiCategoriesFetched = createSelector(
   [selectPiCategories],
-  piCategoriesSate => piCategoriesSate.isPiCategoriesFetched
+  piCategoriesState => piCategoriesState.isPiCategoriesFetched
 );
 
 export const selectFindPiCategoriesByParams = createSelector(

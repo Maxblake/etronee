@@ -1,7 +1,7 @@
 import AdruinoCategoriesActionTypes from './arduino-categories.types';
 
 const INITIAL_STATE = {
-  arduinoCategoriesData: [],
+  arduinoCategoriesData: {},
   isArduinoCategoriesFetched: false,
   errorMessage: null
 };
@@ -24,9 +24,7 @@ const arduinoCategoriesReducer = (state = INITIAL_STATE, action) => {
         errorMessage: action.payload
       };
     default:
-      return {
-        ...state
-      };
+      return state;
   }
 };
 

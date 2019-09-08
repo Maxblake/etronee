@@ -1,7 +1,7 @@
 import PiCategoriesActionTypes from './pi-categories.types';
 
 const INITIAL_STATE = {
-  piCategoriesData: [],
+  piCategoriesData: {},
   isPiCategoriesFetched: false,
   errorMessage: null
 };
@@ -24,9 +24,7 @@ const piCategoriesReducer = (state = INITIAL_STATE, action) => {
         errorMessage: action.payload
       };
     default:
-      return {
-        ...state
-      };
+      return state;
   }
 };
 
