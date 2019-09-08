@@ -1,6 +1,7 @@
 import React from 'react';
 
 import FormInput from '../../components/form-input/form-input.component';
+import CustomButton from '../../components/custom-button/custom-button.component';
 
 import './sign-in-page.styles.scss';
 
@@ -23,6 +24,7 @@ class SignInPage extends React.Component {
     const { value, name } = event.target;
     this.setState({ [name]: value });
   };
+
   render() {
     return (
       <div className='sign-in-page_container'>
@@ -50,7 +52,7 @@ class SignInPage extends React.Component {
 
           <div>Don't have an account? Create One</div>
 
-          <input type='submit' value='Submit' />
+          <CustomButton type='submit'>Sign In</CustomButton>
         </form>
       </div>
     );
