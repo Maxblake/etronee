@@ -13,22 +13,27 @@ const ProductOverview = ({ product }) => {
         className='overview-product_image'
         style={{ backgroundImage: `url(${product.product_image})` }}
       />
-      <span
-        key={`${product.product_id}_name`}
-        className='overview-product_name'
+      <div
+        key={`${product.product_id}_section`}
+        className='overview-product_section'
       >
-        {product.product_name}
-      </span>
-      <span
-        key={`${product.product_id}_stock`}
-        className='overview-product_stock'
-      >
-        {product.product_stock === 'in stock' ? 'In Stock' : 'Out Of Stock'}
-      </span>
-      <span
-        key={`${product.product_id}_price`}
-        className='overview-product_price'
-      >{`$${product.product_price}`}</span>
+        <span
+          key={`${product.product_id}_name`}
+          className='overview-product_name'
+        >
+          {product.product_name}
+        </span>
+        <span
+          key={`${product.product_id}_stock`}
+          className='overview-product_stock'
+        >
+          {product.product_stock === 'in stock' ? 'In Stock' : 'Out Of Stock'}
+        </span>
+        <span
+          key={`${product.product_id}_price`}
+          className='overview-product_price'
+        >{`$${product.product_price}`}</span>
+      </div>
     </div>
   );
 };
