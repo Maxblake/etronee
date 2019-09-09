@@ -11,6 +11,9 @@ const HomePage = lazy(() => import('./pages/homepage/homepage.component'));
 const SignInPage = lazy(() =>
   import('./pages/sign-in-page/sign-in-page.component')
 );
+const SignUpPage = lazy(() =>
+  import('./pages/sign-up-page/sign-up-page.component')
+);
 const CollectionPage = lazy(() =>
   import('./pages/collection-page/collection-page.component')
 );
@@ -39,9 +42,8 @@ class App extends Component {
             }
           });
         });
-      } else {
-        this.setState({ currentUser: null });
       }
+      this.setState({ currentUser: null });
     });
   }
 
@@ -59,6 +61,11 @@ class App extends Component {
             exact
             path='/signin'
             component={WaitingComponent(SignInPage)}
+          />
+          <Route
+            exact
+            path='/signup'
+            component={WaitingComponent(SignUpPage)}
           />
           <Route
             path='/:categoryId'
