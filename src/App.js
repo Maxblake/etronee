@@ -1,11 +1,13 @@
 import React, { Component, lazy, Suspense } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import Header from './components/header/header.component';
 import SpinnerCycle from './components/spinner-cycle/spinner-cycle.component';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { setCurrentUser } from './redux/user/user.actions';
+import { selectCurrentUser } from './redux/user/user.selectors';
 
 import './App.css';
 
@@ -25,6 +27,7 @@ class App extends Component {
 
   componentDidMount() {
     const { setCurrentUser } = this.props;
+
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuthObj => {
       if (userAuthObj) {
         const userRef = await createUserProfileDocument(userAuthObj);
@@ -46,7 +49,10 @@ class App extends Component {
 
   render() {
     const { currentUser } = this.props;
+
     const SignInPageHOC = waitingComponent(SignInPage);
+    const SignUpPageHOC = waitingComponent(SignUpPage);
+
     return (
       <div className='App'>
         <Header />
@@ -62,7 +68,9 @@ class App extends Component {
           <Route
             exact
             path='/signup'
-            component={waitingComponent(SignUpPage)}
+            render={props =>
+              currentUser ? <Redirect to='/' /> : <SignUpPageHOC {...props} />
+            }
           />
           <Route
             path='/:categoryId'
@@ -80,8 +88,8 @@ const waitingComponent = Component => ({ ...props }) => (
   </Suspense>
 );
 
-const mapStateToProps = ({ user: { currentUser } }) => ({
-  currentUser
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
 });
 
 const mapDispatchToProps = dispatch => ({
