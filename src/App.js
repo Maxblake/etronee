@@ -1,9 +1,11 @@
 import React, { Component, lazy, Suspense } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import Header from './components/header/header.component';
 import SpinnerCycle from './components/spinner-cycle/spinner-cycle.component';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
+import { setCurrentUser } from './redux/user/user.actions';
 
 import './App.css';
 
@@ -19,31 +21,22 @@ const CollectionPage = lazy(() =>
 );
 
 class App extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      currentUser: null
-    };
-  }
-
   unsubscribeFromAuth = null;
 
   componentDidMount() {
+    const { setCurrentUser } = this.props;
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuthObj => {
       if (userAuthObj) {
         const userRef = await createUserProfileDocument(userAuthObj);
 
         userRef.onSnapshot(snapShot => {
-          this.setState({
-            currentUser: {
-              id: snapShot.id,
-              ...snapShot.data()
-            }
+          setCurrentUser({
+            id: snapShot.id,
+            ...snapShot.data()
           });
         });
       }
-      this.setState({ currentUser: null });
+      setCurrentUser(userAuthObj);
     });
   }
 
@@ -52,24 +45,28 @@ class App extends Component {
   }
 
   render() {
+    const { currentUser } = this.props;
+    const SignInPageHOC = waitingComponent(SignInPage);
     return (
       <div className='App'>
-        <Header currentUser={this.state.currentUser} />
+        <Header />
         <Switch>
-          <Route exact path='/' component={WaitingComponent(HomePage)} />
+          <Route exact path='/' component={waitingComponent(HomePage)} />
           <Route
             exact
             path='/signin'
-            component={WaitingComponent(SignInPage)}
+            render={props =>
+              currentUser ? <Redirect to='/' /> : <SignInPageHOC {...props} />
+            }
           />
           <Route
             exact
             path='/signup'
-            component={WaitingComponent(SignUpPage)}
+            component={waitingComponent(SignUpPage)}
           />
           <Route
             path='/:categoryId'
-            component={WaitingComponent(CollectionPage)}
+            component={waitingComponent(CollectionPage)}
           />
         </Switch>
       </div>
@@ -77,12 +74,21 @@ class App extends Component {
   }
 }
 
-function WaitingComponent(Component) {
-  return props => (
-    <Suspense fallback={<SpinnerCycle />}>
-      <Component {...props} />
-    </Suspense>
-  );
-}
+const waitingComponent = Component => ({ ...props }) => (
+  <Suspense fallback={<SpinnerCycle />}>
+    <Component {...props} />
+  </Suspense>
+);
 
-export default App;
+const mapStateToProps = ({ user: { currentUser } }) => ({
+  currentUser
+});
+
+const mapDispatchToProps = dispatch => ({
+  setCurrentUser: user => dispatch(setCurrentUser(user))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

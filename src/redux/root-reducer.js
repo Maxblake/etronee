@@ -5,6 +5,7 @@ import storage from 'redux-persist/lib/storage';
 import featuredCategoriesReducer from './featured-categories/featured-categories.reducer';
 import arduinoCategoriesReducer from './arduino-categories/arduino-categories.reducer';
 import piCategoriesReducer from './pi-categories/pi-categories.reducer';
+import userReducer from './user/user.reducer';
 
 const persistConfig = {
   key: 'root',
@@ -15,7 +16,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
   featuredCategories: featuredCategoriesReducer,
   arduinoCategories: arduinoCategoriesReducer,
-  piCategories: piCategoriesReducer
+  piCategories: piCategoriesReducer,
+  user: userReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);
