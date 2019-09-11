@@ -5,7 +5,9 @@ import { createStructuredSelector } from 'reselect';
 
 import Header from './components/header/header.component';
 import SpinnerCycle from './components/spinner-cycle/spinner-cycle.component';
+
 import { selectCurrentUser } from './redux/user/user.selectors';
+import { checkUserSession } from './redux/user/user.actions';
 
 import './App.css';
 
@@ -24,18 +26,8 @@ class App extends Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    // this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuthObj => {
-    //   if (userAuthObj) {
-    //     const userRef = await createUserProfileDocument(userAuthObj);
-    //     userRef.onSnapshot(snapShot => {
-    //       setCurrentUser({
-    //         id: snapShot.id,
-    //         ...snapShot.data()
-    //       });
-    //     });
-    //   }
-    //   setCurrentUser(userAuthObj);
-    // });
+    const { checkUserSession } = this.props;
+    checkUserSession();
   }
 
   componentWillUnmount() {
@@ -83,8 +75,15 @@ const waitingComponent = Component => ({ ...props }) => (
   </Suspense>
 );
 
+const mapDispatchToProps = dispatch => ({
+  checkUserSession: () => dispatch(checkUserSession())
+});
+
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser
 });
 
-export default connect(mapStateToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
