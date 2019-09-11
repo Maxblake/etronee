@@ -5,12 +5,13 @@ import { createStructuredSelector } from 'reselect';
 
 import { auth } from '../../firebase/firebase.utils';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
+import { signOutStart } from '../../redux/user/user.actions';
 
 import { ReactComponent as Logo } from '../assets/logo.svg';
 
 import './header.styles.scss';
 
-const Header = ({ currentUser }) => {
+const Header = ({ currentUser, signOutStart }) => {
   return (
     <div className='header-container'>
       <Link className='logo-container' to='/'>
@@ -18,7 +19,7 @@ const Header = ({ currentUser }) => {
       </Link>
       <div className='options-container'>
         {currentUser ? (
-          <div className='signin-option' onClick={() => auth.signOut()}>
+          <div className='signin-option' onClick={signOutStart}>
             Sign Out
           </div>
         ) : (
@@ -35,4 +36,11 @@ const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser
 });
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = dispatch => ({
+  signOutStart: () => dispatch(signOutStart())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Header);
