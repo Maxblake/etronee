@@ -66,7 +66,7 @@ class SignUpPage extends Component {
             name='password'
             value={password}
             onChange={this.handleChange}
-            label='Password'
+            label='Password (at least 6 characters long)'
             required
           />
           <FormInput

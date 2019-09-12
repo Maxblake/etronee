@@ -20,3 +20,12 @@ export const selectFindFeaturedCategoriesByParams = params =>
         eachCategory => eachCategory.category_id === params
       )
   );
+
+export const selectFindFeaturedProductByParams = params =>
+  createSelector(
+    [selectFeaturedCategoriesData],
+    featuredProducts =>
+      featuredProducts.products.find(
+        eachProduct => eachProduct.product_id === params
+      )
+  );

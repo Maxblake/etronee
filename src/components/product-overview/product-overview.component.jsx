@@ -1,8 +1,9 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import './product-overview.styles.scss';
 
-const ProductOverview = ({ product }) => {
+const ProductOverview = ({ product, match, history }) => {
   return (
     <div
       key={`${product.product_id}_container`}
@@ -12,6 +13,7 @@ const ProductOverview = ({ product }) => {
         key={`${product.product_id}_image`}
         className='overview-product_image'
         style={{ backgroundImage: `url(${product.product_image})` }}
+        onClick={() => history.push(`${match.url}/${product.product_id}`)}
       />
       <div
         key={`${product.product_id}_section`}
@@ -20,6 +22,7 @@ const ProductOverview = ({ product }) => {
         <span
           key={`${product.product_id}_name`}
           className='overview-product_name'
+          onClick={() => history.push(`${match.url}/${product.product_id}`)}
         >
           {product.product_name}
         </span>
@@ -27,7 +30,10 @@ const ProductOverview = ({ product }) => {
           key={`${product.product_id}_stock`}
           className='overview-product_stock'
         >
-          {product.product_stock === 'in stock' ? 'In Stock' : 'Out Of Stock'}
+          {parseInt(product.product_stock) >= 0 ||
+          product.product_stock === 'in stock'
+            ? 'In Stock'
+            : 'Out Of Stock'}
         </span>
         <span
           key={`${product.product_id}_price`}
@@ -38,4 +44,4 @@ const ProductOverview = ({ product }) => {
   );
 };
 
-export default ProductOverview;
+export default withRouter(ProductOverview);

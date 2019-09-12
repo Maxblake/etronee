@@ -1,8 +1,11 @@
 .overview-product_container {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 10rem auto;
+  grid-template-areas: 'image section';
 
   & .overview-product_image {
+    grid-area: image;
     width: 10rem;
     height: 10rem;
     background-position: center;
@@ -11,6 +14,7 @@
   }
 
   & .overview-product_section {
+    grid-area: section;
     display: flex;
     flex-direction: column;
 

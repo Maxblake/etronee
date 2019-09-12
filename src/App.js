@@ -18,8 +18,8 @@ const SignInPage = lazy(() =>
 const SignUpPage = lazy(() =>
   import('./pages/sign-up-page/sign-up-page.component')
 );
-const CollectionPage = lazy(() =>
-  import('./pages/collection-page/collection-page.component')
+const CategoryPage = lazy(() =>
+  import('./pages/category-page/category-page.component')
 );
 
 class App extends Component {
@@ -37,39 +37,44 @@ class App extends Component {
   render() {
     const { currentUser } = this.props;
 
-    const SignInPageHOC = waitingComponent(SignInPage);
-    const SignUpPageHOC = waitingComponent(SignUpPage);
+    const SignInPageWaiting = ComponentHOC(SignInPage);
+    const SignUpPageWaiting = ComponentHOC(SignUpPage);
 
     return (
       <div className='App'>
         <Header />
         <Switch>
-          <Route exact path='/' component={waitingComponent(HomePage)} />
+          <Route exact path='/' component={ComponentHOC(HomePage)} />
           <Route
             exact
             path='/signin'
             render={props =>
-              currentUser ? <Redirect to='/' /> : <SignInPageHOC {...props} />
+              currentUser ? (
+                <Redirect to='/' />
+              ) : (
+                <SignInPageWaiting {...props} />
+              )
             }
           />
           <Route
             exact
             path='/signup'
             render={props =>
-              currentUser ? <Redirect to='/' /> : <SignUpPageHOC {...props} />
+              currentUser ? (
+                <Redirect to='/' />
+              ) : (
+                <SignUpPageWaiting {...props} />
+              )
             }
           />
-          <Route
-            path='/:categoryId'
-            component={waitingComponent(CollectionPage)}
-          />
+          <Route path='/:categoryId' component={ComponentHOC(CategoryPage)} />
         </Switch>
       </div>
     );
   }
 }
 
-const waitingComponent = Component => ({ ...props }) => (
+export const ComponentHOC = Component => ({ ...props }) => (
   <Suspense fallback={<SpinnerCycle />}>
     <Component {...props} />
   </Suspense>

@@ -7,6 +7,7 @@ import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { signOutStart } from '../../redux/user/user.actions';
 
 import { ReactComponent as Logo } from '../assets/logo.svg';
+import { ReactComponent as CartIcon } from '../assets/cart.svg';
 
 import './header.styles.scss';
 
@@ -26,6 +27,10 @@ const Header = ({ currentUser, signOutStart }) => {
             Sign In
           </Link>
         )}
+        <div className='cart-container'>
+          <CartIcon className='cart-icon' />
+          <div className='cart-total'>1</div>
+        </div>
       </div>
     </div>
   );
