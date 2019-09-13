@@ -21,6 +21,9 @@ const SignUpPage = lazy(() =>
 const CategoryPage = lazy(() =>
   import('./pages/category-page/category-page.component')
 );
+const CheckoutPage = lazy(() =>
+  import('./pages/checkout-page/checkout-page.component')
+);
 
 class App extends Component {
   unsubscribeFromAuth = null;
@@ -42,7 +45,7 @@ class App extends Component {
 
     return (
       <div className='App'>
-        <Header />
+        <Route component={Header} />
         <Switch>
           <Route exact path='/' component={ComponentHOC(HomePage)} />
           <Route
@@ -66,6 +69,11 @@ class App extends Component {
                 <SignUpPageWaiting {...props} />
               )
             }
+          />
+          <Route
+            exact
+            path='/checkout'
+            component={ComponentHOC(CheckoutPage)}
           />
           <Route path='/:categoryId' component={ComponentHOC(CategoryPage)} />
         </Switch>

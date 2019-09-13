@@ -14,6 +14,7 @@ const ProductPage = ({ product, addItem }) => {
   return (
     <div className='product-page'>
       <h2>{product.product_name}</h2>
+      <h3>{`ID: ${product.product_id}`}</h3>
       <div className='product-info'>
         <div
           className='product-image'
@@ -28,6 +29,7 @@ const ProductPage = ({ product, addItem }) => {
               : 'Out Of Stock'}
           </span>
           <CustomButton
+            className='cart-button'
             type='button'
             onClick={() => addItem(product)}
             disabled={parseInt(product.product_stock) <= 0 ? true : false}

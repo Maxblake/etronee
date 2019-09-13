@@ -11,7 +11,8 @@ import CartIcon from '../../components/cart-icon/cart-icon.component';
 
 import './header.styles.scss';
 
-const Header = ({ currentUser, signOutStart }) => {
+const Header = ({ currentUser, signOutStart, history, match }) => {
+  console.log(history, match);
   return (
     <div className='header-container'>
       <Link className='logo-container' to='/'>
@@ -27,7 +28,9 @@ const Header = ({ currentUser, signOutStart }) => {
             Sign In
           </Link>
         )}
-        <CartIcon />
+        <Link to='/checkout'>
+          <CartIcon />
+        </Link>
       </div>
     </div>
   );
