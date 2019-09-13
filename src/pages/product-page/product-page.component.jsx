@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 import { selectFindArduinoProductByParams } from '../../redux/arduino-categories/arduino-categories.selectors';
 import { selectFindPiProductByParams } from '../../redux/pi-categories/pi-categories.selectors';
 import { selectFindFeaturedProductByParams } from '../../redux/featured-categories/featured-categories.selectors';
+import { addItem } from '../../redux/cart/cart.actions';
 
 import CustomButton from '../../components/custom-button/custom-button.component';
-import Quantity from '../../components/quantity/quantity.component';
 
 import './product-page.styles.scss';
 
-const ProductPage = ({ product }) => {
+const ProductPage = ({ product, addItem }) => {
   return (
     <div className='product-page'>
       <h2>{product.product_name}</h2>
@@ -27,10 +27,9 @@ const ProductPage = ({ product }) => {
               ? 'In Stock'
               : 'Out Of Stock'}
           </span>
-          <Quantity />
           <CustomButton
             type='button'
-            onClick={null}
+            onClick={() => addItem(product)}
             disabled={parseInt(product.product_stock) <= 0 ? true : false}
           >
             {parseInt(product.product_stock) >= 0 ||
@@ -66,4 +65,11 @@ const mapStateToProps = (state, ownProps) => {
   }
 };
 
-export default connect(mapStateToProps)(ProductPage);
+const mapDispatchToProps = dispatch => ({
+  addItem: item => dispatch(addItem(item))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProductPage);

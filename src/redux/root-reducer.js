@@ -6,6 +6,7 @@ import featuredCategoriesReducer from './featured-categories/featured-categories
 import arduinoCategoriesReducer from './arduino-categories/arduino-categories.reducer';
 import piCategoriesReducer from './pi-categories/pi-categories.reducer';
 import userReducer from './user/user.reducer';
+import cartReducer from './cart/cart.reducer';
 
 const persistConfig = {
   key: 'root',
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
   featuredCategories: featuredCategoriesReducer,
   arduinoCategories: arduinoCategoriesReducer,
   piCategories: piCategoriesReducer,
-  user: userReducer
+  user: userReducer,
+  cart: cartReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);
