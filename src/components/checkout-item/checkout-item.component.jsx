@@ -1,16 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { clearItemFromCart } from '../../redux/cart/cart.actions';
+import { roundPrice } from '../../redux/cart/cart.utils';
 
 import './checkout-item.styles.scss';
 
-const CheckoutItem = ({ item }) => {
-  console.log(item);
-
-  const roundPrice = (value, decimals) =>
-    Number(Math.round(value + 'e' + decimals) + 'e-' + decimals).toFixed(
-      decimals
-    );
-
+const CheckoutItem = ({ item, clearItem }) => {
   return (
     <div className='checkout-item_container'>
       <div
@@ -29,7 +26,9 @@ const CheckoutItem = ({ item }) => {
           <div className='checkout-quantity-number'>{item.quantity}</div>
           <div className='checkout-quantity-change'>&#43;</div>
         </div>
-        <div className='checkout-item-remove'>Remove</div>
+        <div className='checkout-item-remove' onClick={() => clearItem(item)}>
+          Remove
+        </div>
       </div>
       <div className='checkout-item-price'>
         {`$${roundPrice(item.product_price * item.quantity, 2)}`}
@@ -38,4 +37,11 @@ const CheckoutItem = ({ item }) => {
   );
 };
 
-export default CheckoutItem;
+const mapDispatchToProps = dispatch => ({
+  clearItem: item => dispatch(clearItemFromCart(item))
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(CheckoutItem);

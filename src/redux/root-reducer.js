@@ -11,7 +11,7 @@ import cartReducer from './cart/cart.reducer';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['featuredCategories', 'arduinoCategories', 'piCategories']
+  whitelist: ['featuredCategories', 'arduinoCategories', 'piCategories', 'cart']
 };
 
 const rootReducer = combineReducers({

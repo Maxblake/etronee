@@ -37,3 +37,8 @@ export const addItemToCartWithQuantity = (
 
   return [...cartItems, { ...product, quantity: quantitySelection }];
 };
+
+export const roundPrice = (value, decimals) =>
+  Number(Math.round(value + 'e' + decimals) + 'e-' + decimals).toFixed(
+    decimals
+  );
