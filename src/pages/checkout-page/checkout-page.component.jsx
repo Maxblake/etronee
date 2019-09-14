@@ -24,7 +24,18 @@ const CheckoutPage = ({ currentUser, cartItems, total }) => {
 
       {cartItems.length ? (
         <div className='checkout-section-header'>
-          <CustomButton className='checkout-button'>Checkout</CustomButton>
+          <div className='checkout-info-section'>
+            <span>
+              Your Cart:{' '}
+              {cartItems.length === 1 ? (
+                <span>1 item</span>
+              ) : (
+                <span>{cartItems.length} items</span>
+              )}
+            </span>
+            <CustomButton className='checkout-button'>Checkout</CustomButton>
+          </div>
+
           <div className='checkout-header'>
             <div className='header-block'>
               <span>Item</span>
