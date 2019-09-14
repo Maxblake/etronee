@@ -1,3 +1,24 @@
-.invisible {
-  visibility: hidden;
+.cart-container {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+
+  & .cart-icon {
+    width: 2rem;
+  }
+
+  & .cart-total {
+    width: 1.3rem;
+    height: 1.3rem;
+    text-align: center;
+    align-self: flex-start;
+    border: 1px solid #ff5722;
+    background-color: #ff5722;
+    color: #eee;
+    border-radius: 50%;
+  }
+
+  & .invisible {
+    visibility: hidden;
+  }
 }

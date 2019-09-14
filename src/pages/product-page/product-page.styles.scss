@@ -23,6 +23,15 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+
+      & .quantity-selection {
+        display: flex;
+        flex-direction: row;
+
+        & .quantity-change {
+          cursor: pointer;
+        }
+      }
     }
   }
 }

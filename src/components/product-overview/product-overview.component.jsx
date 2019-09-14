@@ -30,7 +30,7 @@ const ProductOverview = ({ product, match, history }) => {
           key={`${product.product_id}_stock`}
           className='overview-product_stock'
         >
-          {parseInt(product.product_stock) >= 0 ||
+          {parseInt(product.product_stock) > 0 ||
           product.product_stock === 'in stock'
             ? 'In Stock'
             : 'Out Of Stock'}
