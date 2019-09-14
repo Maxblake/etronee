@@ -9,13 +9,14 @@ import {
 } from '../../redux/cart/cart.selectors';
 import { roundPrice } from '../../redux/cart/cart.utils';
 
-import CustomButton from '../../components/custom-button/custom-button.component';
 import CartEmpty from '../../components/cart-empty/cart-empty.component';
 import CheckoutItem from '../../components/checkout-item/checkout-item.component';
+import StripeCheckoutButton from '../../components/stripe-button/stripe-button.component';
 
 import './checkout-page.styles.scss';
 
 const CheckoutPage = ({ currentUser, cartItems, total }) => {
+  const totalPrice = roundPrice(total, 2);
   return (
     <div className='checkout-page-container'>
       <div className='welcome'>{`Hi! ${
@@ -33,7 +34,10 @@ const CheckoutPage = ({ currentUser, cartItems, total }) => {
                 <span>{cartItems.length} items</span>
               )}
             </span>
-            <CustomButton className='checkout-button'>Checkout</CustomButton>
+            <StripeCheckoutButton
+              className='stripe-button'
+              price={totalPrice}
+            />
           </div>
 
           <div className='checkout-header'>
@@ -63,7 +67,7 @@ const CheckoutPage = ({ currentUser, cartItems, total }) => {
 
       {cartItems.length ? (
         <div className='checkout-total-price'>
-          <span>Total: ${roundPrice(total, 2)}</span>
+          <span>Total: ${totalPrice}</span>
         </div>
       ) : null}
     </div>
