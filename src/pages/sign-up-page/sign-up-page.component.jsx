@@ -42,9 +42,10 @@ class SignUpPage extends Component {
   render() {
     const { displayName, email, password, confirmPassword } = this.state;
     return (
-      <div className='sign-up'>
-        <h2 className='sign-up-title'>Create an Account</h2>
-        <form className='sign-up-form' onSubmit={this.handleSubmit}>
+      <div className='sign-up-page_container'>
+        <h2 className='sign-up-page_title'>Create an Account</h2>
+
+        <form className='sign-in-and-up-form' onSubmit={this.handleSubmit}>
           <FormInput
             type='text'
             name='displayName'
@@ -77,11 +78,17 @@ class SignUpPage extends Component {
             label='Confirm Password'
             required
           />
+
           <SigningLink to='/signin'>
-            Already have an account? Sign in now
+            <span>Already have an account? Sign in now</span>
           </SigningLink>
-          <CustomButton type='submit'>Sign Up</CustomButton>
         </form>
+
+        <div className='sign-up-button_container'>
+          <CustomButton type='submit'>
+            <span>Sign Up</span>
+          </CustomButton>
+        </div>
       </div>
     );
   }

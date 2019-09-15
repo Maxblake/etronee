@@ -5,9 +5,11 @@ import './signing-link.styles.scss';
 
 const SigningLink = ({ children, ...allProps }) => {
   return (
-    <Link className='signing-link' {...allProps}>
-      {children}
-    </Link>
+    <div className='signing-link_container'>
+      <Link className='signing-link' {...allProps}>
+        {children}
+      </Link>
+    </div>
   );
 };
 

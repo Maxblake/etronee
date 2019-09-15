@@ -43,7 +43,7 @@ class SignInPage extends React.Component {
           Sign in with your email or your Google account
         </h2>
 
-        <form onSubmit={this.handleSubmit}>
+        <form className='sign-in-and-up-form' onSubmit={this.handleSubmit}>
           <FormInput
             name='email'
             type='email'
@@ -64,8 +64,10 @@ class SignInPage extends React.Component {
           <SigningLink to='/signup'>
             Don't have an account? Create One
           </SigningLink>
-
+        </form>
+        <div className='sign-in-buttons-group'>
           <CustomButton type='submit'>Sign In</CustomButton>
+
           <CustomButton
             type='button'
             onClick={googleSignInStart}
@@ -73,7 +75,7 @@ class SignInPage extends React.Component {
           >
             Sign In with Google
           </CustomButton>
-        </form>
+        </div>
       </div>
     );
   }

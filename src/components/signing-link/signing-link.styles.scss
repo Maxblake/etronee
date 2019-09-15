@@ -1,5 +1,27 @@
-.signing-link {
-  cursor: pointer;
-  text-decoration: none;
-  color: rgb(51, 51, 51);
+.signing-link_container {
+  text-align: center;
+  margin: 2.5rem 0;
+
+  @media screen and (min-width: 768px) {
+    margin: 4rem 0;
+  }
+
+  .signing-link {
+    cursor: pointer;
+    text-decoration: none;
+    color: #0457c8;
+
+    &:hover {
+      color: #001e73;
+      text-decoration: underline;
+    }
+
+    @media screen and (min-width: 768px) {
+      font-size: 1.1rem;
+    }
+
+    @media screen and (max-width: 320px) {
+      font-size: 0.9rem;
+    }
+  }
 }
