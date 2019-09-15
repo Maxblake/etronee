@@ -1,11 +1,14 @@
 import React from 'react';
 
-import './spinner-cycle.styles.scss';
+import {
+  SpinnerCycleContainer,
+  SpinnerCycleBody
+} from './spinner-cycle.styles';
 
 const SpinnerCycle = () => (
-  <div className='spinner-cycle_container'>
-    <div className='spinner-cycle' />
-  </div>
+  <SpinnerCycleContainer>
+    <SpinnerCycleBody />
+  </SpinnerCycleContainer>
 );
 
 export default SpinnerCycle;
