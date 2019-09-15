@@ -2,23 +2,31 @@
   cursor: pointer;
   display: flex;
   flex-direction: row;
+  position: relative;
 
-  & .cart-icon {
+  .cart-icon {
     width: 2rem;
+
+    @media screen and (min-width: 768px) {
+      width: 2.3rem;
+    }
   }
 
-  & .cart-total {
+  .cart-total {
     width: 1.3rem;
     height: 1.3rem;
     text-align: center;
     align-self: flex-start;
-    border: 1px solid #ff5722;
-    background-color: #ff5722;
+    border: 1px solid #f44336;
+    background-color: #f44336;
     color: #eee;
     border-radius: 50%;
+    position: absolute;
+    left: 80%;
+    bottom: 50%;
   }
 
-  & .invisible {
-    visibility: hidden;
+  .invisible {
+    display: none;
   }
 }

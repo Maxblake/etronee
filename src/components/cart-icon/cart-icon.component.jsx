@@ -11,6 +11,7 @@ const CartIcon = ({ itemCount }) => {
   return (
     <div className='cart-container'>
       <Icon className='cart-icon' />
+
       {itemCount ? (
         <div className='cart-total'>{itemCount}</div>
       ) : (

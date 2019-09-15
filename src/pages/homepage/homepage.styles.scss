@@ -3,23 +3,48 @@
   flex-direction: column;
   align-items: center;
 
-  & h2 {
-    margin: 0;
+  h2 {
+    margin: 3rem auto 1rem auto;
     font-size: 1.8rem;
     text-align: center;
+
+    @media screen and (min-width: 768px) {
+      font-size: 2.5rem;
+    }
+
+    @media screen and (max-width: 320px) {
+      font-size: 1.6rem;
+    }
   }
 
-  & .boards-categories_section .boards-categories_overview {
+  .boards-categories_section {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+
+    .boards-categories_overview {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 95vw;
+      margin: 0 auto;
+
+      @media screen and (min-width: 768px) {
+        flex-direction: row;
+        width: 95vw;
+      }
+    }
   }
 
-  & .featured-categories-section .featured-categories_overview {
+  .featured-categories-section {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+
+    .featured-categories_overview {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
   }
 }

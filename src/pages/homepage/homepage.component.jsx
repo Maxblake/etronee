@@ -56,20 +56,17 @@ class HomePage extends Component {
                 categoryName='arduino'
                 categoryData={arduinoCategoriesData}
               />
-            ) : (
-              <SpinnerBlock />
-            )}
+            ) : null}
             {isPiCategoriesFetched ? (
               <Category
                 key={piCategoriesData.category_id}
                 categoryName='pi'
                 categoryData={piCategoriesData}
               />
-            ) : (
-              <SpinnerBlock />
-            )}
+            ) : null}
           </div>
         </div>
+
         <div className='featured-categories-section'>
           <h2>Featured Categories</h2>
           <div className='featured-categories_overview'>

@@ -20,6 +20,7 @@ const Category = ({ categoryName, categoryData, history, match }) => {
           }}
         />
       ) : null}
+
       <span className={`${categoryName}-category_title`}>
         {categoryName === 'featured-category'
           ? categoryData.category_name
@@ -27,6 +28,7 @@ const Category = ({ categoryName, categoryData, history, match }) => {
           ? 'Arduino'
           : 'Raspberry Pi'}
       </span>
+
       {categoryName === 'arduino' ? (
         <div>
           <span className='board-slogan'>Get Back your Ooo with Arduino</span>

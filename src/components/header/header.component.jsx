@@ -11,22 +11,24 @@ import CartIcon from '../../components/cart-icon/cart-icon.component';
 
 import './header.styles.scss';
 
-const Header = ({ currentUser, signOutStart, history, match }) => {
+const Header = ({ currentUser, signOutStart }) => {
   return (
     <div className='header-container'>
       <Link className='logo-container' to='/'>
         <Logo className='logo' />
       </Link>
+
       <div className='options-container'>
         {currentUser ? (
           <div className='signin-option' onClick={signOutStart}>
-            Sign Out
+            <span>Sign Out</span>
           </div>
         ) : (
           <Link className='signin-option' to='/signin'>
-            Sign In
+            <span>Sign In</span>
           </Link>
         )}
+
         <Link className='cart-option' to='/checkout'>
           <CartIcon />
         </Link>

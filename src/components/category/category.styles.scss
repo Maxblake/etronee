@@ -2,9 +2,14 @@
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  margin: 0.5rem 0;
 
   &:hover {
     text-decoration: underline;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin: 0.5rem 1rem;
   }
 }
 
@@ -13,23 +18,37 @@
   justify-content: center;
   position: relative;
   width: 100%;
-  height: 11rem;
+  height: 13rem;
   border: 1px solid #ffd700;
   background: #ffee58;
   z-index: 1;
+  padding: 1rem;
 
-  & .arduino-category_title,
-  & .pi-category_title {
+  @media screen and (min-width: 768px) {
+    height: 25rem;
+  }
+
+  .arduino-category_title,
+  .pi-category_title {
     font-size: 1.7rem;
     font-weight: 700;
+    margin-bottom: 1rem;
+
+    @media screen and (min-width: 768px) {
+      font-size: 2rem;
+    }
   }
 
-  & .board-slogan {
-    font-size: 0.8rem;
-    font-weight: 600;
+  .board-slogan {
+    font-size: 1.3rem;
+    font-weight: 400;
+
+    @media screen and (min-width: 768px) {
+      font-size: 1.4rem;
+    }
   }
 
-  & .board-category-background {
+  .board-category-background {
     position: absolute;
     left: 0;
     right: 0;
@@ -42,17 +61,41 @@
   justify-content: flex-start;
   width: 6.5rem;
   height: 9rem;
+  margin: 0.8rem 0.6rem;
 
-  & .featured_background-image {
+  @media screen and (min-width: 768px) {
+    width: 10rem;
+    height: 15rem;
+    margin: 0.8rem 1rem;
+  }
+
+  @media screen and (max-width: 360px) {
+    margin: 0.8rem 0.3rem;
+  }
+
+  @media screen and (max-width: 320px) {
+    margin: 0.8rem 1.3rem;
+  }
+
+  .featured_background-image {
     width: auto;
     height: 6rem;
     background-position: center;
     background-size: cover;
     border-radius: 50%;
+
+    @media screen and (min-width: 768px) {
+      height: 10rem;
+    }
   }
 
-  & .featured-category-category_title {
+  .featured-category-category_title {
     text-align: center;
     overflow-wrap: break-word;
+    font-size: 1.1rem;
+
+    @media screen and (min-width: 768px) {
+      font-size: 1.3rem;
+    }
   }
 }
