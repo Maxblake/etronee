@@ -12,7 +12,8 @@ const StripeCheckoutButton = ({ price }) => {
 
   return (
     <StripeCheckout
-      label='Checkout'
+      className='stripe-checkout-button'
+      label='Checkout My Cart'
       name='Etronee'
       billingAddress
       shippingAddress

@@ -82,13 +82,13 @@ class SignUpPage extends Component {
           <SigningLink to='/signin'>
             <span>Already have an account? Sign in now</span>
           </SigningLink>
-        </form>
 
-        <div className='sign-up-button_container'>
-          <CustomButton type='submit'>
-            <span>Sign Up</span>
-          </CustomButton>
-        </div>
+          <div className='sign-up-button_container'>
+            <CustomButton type='submit'>
+              <span>Sign Up</span>
+            </CustomButton>
+          </div>
+        </form>
       </div>
     );
   }

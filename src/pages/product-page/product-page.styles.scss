@@ -54,6 +54,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: relative;
 
       @media screen and (min-width: 1025px) {
         grid-template: product-info;
@@ -96,6 +97,7 @@
       .quantity-selection {
         display: flex;
         flex-direction: row;
+        align-items: center;
         font-size: 1.3rem;
         margin: 0.5rem 0 1rem 0;
 
@@ -154,6 +156,17 @@
           cursor: not-allowed;
           background-color: #e0e0e0;
           color: rgb(51, 51, 51);
+        }
+      }
+
+      .submit-emoji {
+        font-size: 1.5rem;
+        margin: 1rem 0;
+        position: absolute;
+        top: 100%;
+
+        @media screen and (min-width: 1025px) {
+          top: 85%;
         }
       }
     }

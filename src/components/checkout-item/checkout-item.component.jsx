@@ -18,12 +18,14 @@ const CheckoutItem = ({ item, clearItem, addItem, removeItem }) => {
         className='checkout-item-image'
         style={{ backgroundImage: `url(${item.product_image})` }}
       />
+
       <Link
         className='checkout-item-name'
         to={`/${item.product_master_category}/${item.product_id}`}
       >
         {item.product_name}
       </Link>
+
       <div className='checkout-quantity_section'>
         <div className='checkout-quantity-selection'>
           <div
@@ -44,6 +46,7 @@ const CheckoutItem = ({ item, clearItem, addItem, removeItem }) => {
           Remove
         </div>
       </div>
+
       <div className='checkout-item-price'>
         {`$${roundPrice(item.product_price * item.quantity, 2)}`}
       </div>

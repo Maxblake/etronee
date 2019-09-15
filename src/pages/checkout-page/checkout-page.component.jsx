@@ -34,11 +34,14 @@ const CheckoutPage = ({ currentUser, cartItems, total }) => {
                 <span>{cartItems.length} items</span>
               )}
             </span>
+
             <StripeCheckoutButton
               className='stripe-button'
               price={totalPrice}
             />
           </div>
+
+          <hr />
 
           <div className='checkout-header'>
             <div className='header-block'>

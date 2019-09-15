@@ -93,7 +93,11 @@ class ProductPage extends Component {
             </CustomButton>
 
             {submit ? (
-              <span role='img' aria-label='submit-notification'>
+              <span
+                role='img'
+                aria-label='submit-notification'
+                className='submit-emoji'
+              >
                 👌
               </span>
             ) : null}

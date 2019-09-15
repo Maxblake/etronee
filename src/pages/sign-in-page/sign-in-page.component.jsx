@@ -64,18 +64,19 @@ class SignInPage extends React.Component {
           <SigningLink to='/signup'>
             Don't have an account? Create One
           </SigningLink>
-        </form>
-        <div className='sign-in-buttons-group'>
-          <CustomButton type='submit'>Sign In</CustomButton>
 
-          <CustomButton
-            type='button'
-            onClick={googleSignInStart}
-            isGoogleSignIn
-          >
-            Sign In with Google
-          </CustomButton>
-        </div>
+          <div className='sign-in-buttons-group'>
+            <CustomButton type='submit'>Sign In</CustomButton>
+
+            <CustomButton
+              type='button'
+              onClick={googleSignInStart}
+              isGoogleSignIn
+            >
+              Sign In with Google
+            </CustomButton>
+          </div>
+        </form>
       </div>
     );
   }

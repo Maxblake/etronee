@@ -12,15 +12,20 @@ const CartEmpty = ({ currentUser }) => {
     <div className='cart-empty_container'>
       <div className='cart-empty_title'>Your cart is empty</div>
       <div className='cart-empty_text'>
-        Browse our <Link to='/'>homepage</Link> to add some items to shopping
-        cart
+        Browse our{' '}
+        <Link className='cart-empty-link' to='/'>
+          <span className='homepage-link'>homepage</span>
+        </Link>{' '}
+        to add some items to shopping cart
         {currentUser ? (
           '.'
         ) : (
           <span>
             {' '}
             or become a member with us by {''}
-            <Link to='/signup'>creating an account.</Link>
+            <Link className='cart-empty-link' to='/signup'>
+              <span className='create-account-link'>creating an account.</span>
+            </Link>
           </span>
         )}
       </div>
