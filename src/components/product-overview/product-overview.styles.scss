@@ -1,25 +1,78 @@
 .overview-product_container {
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 10rem auto;
+  grid-template-columns: 8rem auto;
   grid-template-areas: 'image section';
+  border: 2px solid rgba(67, 41, 163, 0.2);
+  width: 100%;
+  margin-bottom: 1rem;
 
-  & .overview-product_image {
+  @media screen and (min-width: 768px) {
+    width: 16rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.5rem 0.3rem;
+    margin: 0 0.7rem 1rem 0.7rem;
+  }
+
+  .overview-product_image {
     grid-area: image;
-    width: 10rem;
-    height: 10rem;
+    width: 8rem;
+    height: 8rem;
     background-position: center;
     background-size: cover;
     cursor: pointer;
+
+    @media screen and (min-width: 768px) {
+      width: 13rem;
+      height: 10rem;
+      margin: 0 auto;
+    }
   }
 
-  & .overview-product_section {
+  .overview-product_section {
     grid-area: section;
     display: flex;
     flex-direction: column;
+    padding: 1rem;
 
-    & .overview-product_name {
+    .overview-product_name {
       cursor: pointer;
+      font-weight: 600;
+      font-size: 1.1rem;
+
+      @media screen and (min-width: 768px) {
+        text-align: center;
+        font-size: 1.2rem;
+      }
+    }
+
+    .stock-label_field {
+      margin: 0.5rem 0;
+      color: #eee;
+      font-size: 1.1rem;
+
+      @media screen and (min-width: 768px) {
+        text-align: center;
+      }
+
+      .in-stock-label {
+        background-color: #4caf50;
+        padding: 0.1rem 0.5rem;
+        border-radius: 1rem;
+      }
+
+      .out-of-stock-label {
+        background-color: #f44336;
+        padding: 0.1rem 0.5rem;
+        border-radius: 1rem;
+      }
+    }
+
+    .overview-product_price {
+      text-align: center;
+      font-size: 1.1rem;
     }
   }
 }

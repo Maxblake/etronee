@@ -19,12 +19,15 @@ const CollectionPage = ({ collection }) => {
           ? 'Raspberry Pi Boards'
           : collection.category_name}
       </h2>
-      {collection.products.map(product => (
-        <ProductOverview
-          key={`${product.product_id}_collection-overview`}
-          product={product}
-        />
-      ))}
+
+      <div className='overview_container'>
+        {collection.products.map(product => (
+          <ProductOverview
+            key={`${product.product_id}_collection-overview`}
+            product={product}
+          />
+        ))}
+      </div>
     </div>
   );
 };
