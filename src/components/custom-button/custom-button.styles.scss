@@ -5,10 +5,11 @@
   width: 10rem;
   height: 3rem;
   border: none;
+  background-color: #e0e0e0;
 
   &:hover {
     color: #eeeeee;
-    background-color: #000;
+    background-color: #ce93d8;
   }
 
   @media screen and (min-width: 768px) {
@@ -25,13 +26,13 @@
   @media screen and (max-width: 320px) {
     margin: 0 0.3rem;
   }
-}
 
-.google-sign-in {
-  background-color: #4285f4;
-  color: #fff;
+  &.google-sign-in {
+    background-color: #4285f4;
+    color: #fff;
 
-  &:hover {
-    background-color: #357ae8;
+    &:hover {
+      background-color: #357ae8;
+    }
   }
 }

@@ -3,8 +3,6 @@ import { Route } from 'react-router-dom';
 
 import SpinnerCycle from '../../components/spinner-cycle/spinner-cycle.component';
 
-import './category-page.styles.scss';
-
 const CollectionPage = lazy(() =>
   import('../collection-page/collection-page.component')
 );

@@ -41,19 +41,25 @@ class ProductPage extends Component {
       <div className='product-page'>
         <h2>{product.product_name}</h2>
         <h3>{`ID: ${product.product_id}`}</h3>
+
         <div className='product-info'>
           <div
             className='product-image'
             style={{ backgroundImage: `url(${product.product_image})` }}
           />
+
           <div className='product-price-section'>
             <span className='product-price'>{`$${product.product_price}`}</span>
+
             <span className='product-stock'>
               {parseInt(product.product_stock) > 0 ||
-              product.product_stock === 'in stock'
-                ? 'In Stock'
-                : 'Out Of Stock'}
+              product.product_stock === 'in stock' ? (
+                <span className='product-in-stock'>In Stock</span>
+              ) : (
+                <span className='product-out-of-stock'>Out Of Stock</span>
+              )}
             </span>
+
             <div className='quantity-selection'>
               <div
                 className='quantity-change'
@@ -66,8 +72,11 @@ class ProductPage extends Component {
                 &#43;
               </div>
             </div>
+
             <CustomButton
-              className='cart-button'
+              className={`custom-button add-to-cart-button ${
+                parseInt(product.product_stock) <= 0 ? 'disabled' : ''
+              } `}
               type='button'
               onClick={() => {
                 addItem({ product, quantitySelection });
@@ -76,10 +85,13 @@ class ProductPage extends Component {
               disabled={parseInt(product.product_stock) <= 0 ? true : false}
             >
               {parseInt(product.product_stock) > 0 ||
-              product.product_stock === 'in stock'
-                ? 'Add to Cart'
-                : 'Item Out of Stock'}
+              product.product_stock === 'in stock' ? (
+                <span className='cart-botton'>Add to Cart</span>
+              ) : (
+                <div className='out-cart-button'>Item Out of Stock</div>
+              )}
             </CustomButton>
+
             {submit ? (
               <span role='img' aria-label='submit-notification'>
                 👌
