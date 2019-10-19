@@ -4,7 +4,7 @@ import logo from '../assets/logo.svg';
 import axios from 'axios';
 
 const StripeCheckoutButton = ({ price }) => {
-  const priceForStripe = price * 100;
+  const priceForStripe = Math.round(price * 100);
   const publishableKey = 'pk_test_UEmjqU07i93vwiFrLnWpbf3b00ItOMJ9xm';
 
   const onToken = token => {
@@ -16,10 +16,9 @@ const StripeCheckoutButton = ({ price }) => {
         token
       }
     })
-      .then(response => alert('Payment successful'))
+      .then(response => console.log('Payment successful'))
       .catch(error => {
         console.log('Payment error: ', error);
-        alert('Payment fail');
       });
   };
 
